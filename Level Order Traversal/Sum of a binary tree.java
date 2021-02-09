@@ -5,32 +5,28 @@ class BinaryTree
         {
             return 0;
         }
+        int sum=0;
         Queue<Node>q=new LinkedList<>();
         q.add(head);
-        int sum=0;
-        while(1==1)
+        while(!q.isEmpty())
         {
             int z=q.size();
-            if(z==0)
-            {
-                return sum;
-            }
             while(z>0)
             {
-              Node temp=q.peek();
-              sum=sum+temp.data;
-              q.remove();
-              if(temp.left!=null)
-              {
-                  q.add(temp.left);
-              }
-              if(temp.right!=null)
-              {
-                  q.add(temp.right);
-              }
-              z--;
-              
+                Node n=q.peek();
+                sum=sum+n.data;
+                q.poll();
+                if(n.left!=null)
+                {
+                    q.add(n.left);
+                }
+                if(n.right!=null)
+                {
+                    q.add(n.right);
+                }
+                z--;
             }
         }
+        return sum;
     }
 }
