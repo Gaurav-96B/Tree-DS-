@@ -6,35 +6,33 @@ class Tree
         {
             return 0;
         }
-        Queue<Node>q=new LinkedList<>();
-        q.add(node);
         int count=0;
-        while(1==1)
-        {
-            int z=q.size();
-            if(z==0)
-            {
-                return count;
-            }
-            while(z>0)
-            {
-                Node temp=q.peek();
-                q.remove();
-                if(temp.left!=null)
+         Queue<Node>q=new LinkedList<>();
+         q.add(node);
+         while(!q.isEmpty())
+         {
+             int z=q.size();
+             while(z>0)
+             {
+                Node n=q.peek();
+                q.poll();
+                if(n.left!=null)
                 {
-                    q.add(temp.left);
+                  q.add(n.left);
+                  
                 }
-                if(temp.right!=null)
+                if(n.right!=null)
                 {
-                    q.add(temp.right);
+                    q.add(n.right);
+        
                 }
-                if(temp.left==null&&temp.right==null)
+                if(n.left==null&&n.right==null)
                 {
                     count++;
                 }
                 z--;
-            }
-        }
-        
+             }
+         }
+         return count;
     }
 }
