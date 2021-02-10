@@ -2,7 +2,7 @@ class Tree
 {
     void mirror(Node node)
     {
-	if(node==null)
+	  if(node==null)
 	{
 	    return ;
 	}
@@ -14,10 +14,12 @@ class Tree
 	    while(z>0)
 	    {
 	        Node n=q.peek();
-	        q.poll();
+	        
 	        Node temp=n.left;
 	        n.left=n.right;
 	        n.right=temp;
+	        
+	        q.poll();
 	        if(n.left!=null)
 	        {
 	            q.add(n.left);
@@ -31,3 +33,4 @@ class Tree
 	}
     }
 }
+    
