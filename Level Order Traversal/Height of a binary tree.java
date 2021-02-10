@@ -1,5 +1,6 @@
 class Solution {
-    int height(Node node) {
+     int height(Node node) 
+    {
         if(node==null)
         {
             return 0;
@@ -11,10 +12,6 @@ class Solution {
         {
             int z=q.size();
             height++;
-            if(z==0)
-            {
-              break;
-            }
             while(z>0)
             {
                 Node n=q.peek();
@@ -31,6 +28,7 @@ class Solution {
             }
         }
         return height;
-        
     }
+        
+    
 }
