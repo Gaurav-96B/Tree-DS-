@@ -1,6 +1,6 @@
 class GfG {
     public int maxLevelSum(Node root) {
-        Queue<Node>q=new LinkedList<>();
+       Queue<Node>q=new LinkedList<>();
         q.add(root);
         int max1=Integer.MIN_VALUE;
         int sum=0;
@@ -9,8 +9,9 @@ class GfG {
             int z=q.size();
             while(z>0)
             {
-                Node temp=q.remove();
+                Node temp=q.peek();
                 sum=sum+temp.data;
+                q.poll();
                 if(temp.left!=null)
                 {
                     q.add(temp.left);
@@ -24,6 +25,6 @@ class GfG {
             max1=Math.max(max1,sum);
             sum=0;
         }
-        return max1;
+        return max1; 
     }
 }
