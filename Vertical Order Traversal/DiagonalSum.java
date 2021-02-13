@@ -19,7 +19,7 @@ class Tree {
             int z=q.size();
             while(z>0)
             {
-            Pair p=q.poll();
+            Pair p=q.peek();
             int hd=p.hd;
             Node curr=p.node;
             if(m.containsKey(hd))
@@ -32,6 +32,7 @@ class Tree {
                 al.add(curr.data);
                 m.put(hd,al);
             }
+            q.poll();
             if(curr.left!=null)
             {
                 q.add(new Pair(curr.left,hd+1));
