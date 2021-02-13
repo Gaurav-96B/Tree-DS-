@@ -9,7 +9,7 @@ class Pair
     }
 }
 class Tree{
-    public void verticalSum(Node root) {
+    public ArrayList<Integer> verticalSum(Node root) {
         Queue<Pair> q=new LinkedList<>();
         Map<Integer,ArrayList<Integer>> m=new TreeMap<>();
         q.add(new Pair(root,0));
@@ -18,7 +18,7 @@ class Tree{
             int z=q.size();
             while(z>0)
             {
-            Pair p=q.poll();
+            Pair p=q.peek();
             int hd=p.hd;
             Node curr=p.node;
             if(m.containsKey(hd))
@@ -31,6 +31,7 @@ class Tree{
                 al.add(curr.data);
                 m.put(hd,al);
             }
+            q.poll();
             if(curr.left!=null)
             {
                 q.add(new Pair(curr.left,hd-1));
@@ -43,8 +44,7 @@ class Tree{
         }
         }
         ArrayList<Integer>a=new ArrayList<>();
-        Set<Map.Entry<Integer,ArrayList<Integer>>>st=m.entrySet();
-        for(Map.Entry<Integer,ArrayList<Integer>> me:st)
+        for(Map.Entry<Integer,ArrayList<Integer>> me:m.entrySet())
         {
             int sum=0;
              ArrayList<Integer> al=me.getValue();
@@ -52,7 +52,8 @@ class Tree{
              {
                  sum=sum+v;
              }
-            System.out.print(sum+" ");
+            a.add(sum);
         }
+        return a;
     }
 }
