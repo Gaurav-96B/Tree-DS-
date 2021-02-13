@@ -34,7 +34,7 @@ class Tree {
             }
             if(curr.left!=null)
             {
-                q.add(new Pair(curr.left,hd+11));
+                q.add(new Pair(curr.left,hd+1));
             }
             if(curr.right!=null)
             {
