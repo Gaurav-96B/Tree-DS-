@@ -1,57 +1,47 @@
 class Tree
 {
-	void printSibling(Node node)
-	{
-	    if(node==null)
-	    {
-	        return;
-	    }
-	    Queue<Node>q=new LinkedList<>();
-	    q.add(node);
-	    Set<Integer>s=new TreeSet<>();
-	    int found=0;
-	    while(!q.isEmpty())
-	    {
-	      int z=q.size() ;
-	      while(z>0)
-	      {
-	          Node temp=q.remove();
-	          if(temp.left!=null)
-	          {
-	              q.add(temp.left);
-	          }
-	          if(temp.right!=null)
-	          {
-	              q.add(temp.right);
-	          }
-	          if(temp.left!=null&&temp.right==null)
-	          {
-	              found=1;
-	              s.add(temp.left.data);
-	          }
-	          if(temp.left==null&&temp.right!=null)
-	          {
-	              found=1;
-	              s.add(temp.right.data);
-	          }
-	          z--;
-	      }
-	    }
-	    if(found==0)
-	    {
-	        System.out.print("-1");
-	    }
-	    else
-	    {
-	    for(int i:s)
-	    {
-	        System.out.print(i+" ");
-	    }
-	    }
-	}
+    ArrayList<Integer> noSibling(Node node)
+    {
+        if(node==null)
+        {
+            return null;
+        }
+        Queue<Node>q=new LinkedList<>();
+        q.add(node);
+         ArrayList<Integer>a=new ArrayList<>();
+        while(!q.isEmpty())
+        {
+           int z=q.size();
+           while(z>0)
+           {
+               Node n=q.peek();
+               if(n.left==null&&n.right!=null)
+               {
+                 a.add(n.right.data);
+               }
+               if(n.left!=null&&n.right==null)
+               {
+                   a.add(n.left.data);
+               }
+               q.poll();
+               if(n.left!=null)
+               {
+                  q.add(n.left);
+               }
+               if(n.right!=null)
+               {
+                   q.add(n.right);
+               }
+               z--;
+               
+           }
+        }
+        if(a.size()==0)
+        {
+          a.add(-1);
+        }
+        Collections.sort(a);
+        return a;
+        
+    }
 }
-
-
-
-
-
